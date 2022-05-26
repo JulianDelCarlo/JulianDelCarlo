@@ -1,0 +1,78 @@
+Algoritmo sin_titulo
+    definir m,i,j, cont,LONGI Como entero
+    definir genz, palabra, cad como cadena
+		
+	Hacer
+		Hacer
+			escribir "INGRESE LA SECUENCIA PARA ENCONTRAR EL GEN[Z] (caracteres a,b,c,d, longitud,9,16)"
+			leer palabra
+				 palabra=mayusculas(palabra)
+			para i=0 hasta longitud(palabra)-1
+				 cad=subcadena(palabra,i,i)///SI PARA VALIDAR CARACTERES
+				si cad <>  "A"  Y cad <>  "B"    Y  cad <>  "C"   Y cad <>  "D" Entonces
+					ESCRIBIR "VUELVA INGRESAR SECUENCIA PARA ENCONTRAR GEN [Z]"
+					LEER PALABRA
+				FinSi
+			FinPara
+		Mientras Que cad =  "A"  Y cad =  "B"    Y  cad =  "C"   Y cad =  "D"
+	Mientras Que longitud(palabra)  <> 9 y longitud(palabra)  <> 16 
+	///2 CICCLOS HACER MIENTRAS QUE
+	m= rc(longitud(palabra))
+	dimension genz(m,m)
+	
+	cont=0
+	para i=0 hasta m-1
+		para j=0 hasta m-1
+			genz(i,j)=subcadena(palabra,cont,cont)
+			cont=cont+1
+		FinPara
+	FinPara
+	
+	mostrargen(genz,m)
+	bgenz(genz,m)
+FinAlgoritmo
+
+Funcion mostrargen( genz, m )
+    definir i,j Como Entero
+	
+	  escribir "LA SECUENCIA DEL GEN INGRESADO ES: "
+	  escribir" "
+	para i=0 hasta m-1
+		para j=0 hasta m-1
+			escribir " [" , genz(i,j),"] " Sin Saltar
+		FinPara
+		escribir" "
+	FinPara
+Fin Funcion
+
+Funcion bgenz ( genz,m )
+	definir i, j, cont, cont2,k Como Entero
+	definir vgen1, vgen2 como cadena
+	dimension vgen1(m)
+	dimension vgen2(m)
+	j=m-1
+	
+	para i=0 hasta m-1
+	  vgen1(i)=genz(i,i)
+	  vgen2(i)=genz(i,j)		
+	   j=j-1
+	 escribir vgen1(i), "    ", vgen2(i)
+	FinPara
+    
+	cont=0
+	cont2=0
+	para i=0 hasta m-1/// POSICISION (0,0) Y (0,M-1) CONTAR LAS DIAGONALES
+		si vgen1(i)=genz(0,0)
+		  cont=cont+1
+	    FinSi
+	    si vgen2(i)=genz(0,m-1)
+		  cont2=cont2+1
+	    FinSi
+	FinPara
+	
+	si cont=m y cont2=m entonces 
+		escribir "SE HA DETECTADO EL GEN [Z]"
+	sino 
+		escribir "LA HUMANIDAD DEPENDE DE TI, PERO SEGUIRAN SIENDO [ZOMBIES]"
+	FinSi
+FinFuncion
