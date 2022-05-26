@@ -1,0 +1,39 @@
+package ServicioMatematica;
+
+import ObjetoMatematica.ObjetoMatematica;
+import java.util.Scanner;
+
+public class ServicioMatematica {
+    
+    Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+    
+    public ObjetoMatematica claseMatematica() {
+        ObjetoMatematica num = new ObjetoMatematica();
+        System.out.println("ingrese un numero decimal");
+        num.setN1(scanner.nextDouble());
+        System.out.println("ingrese otro numero decimal");
+        num.setN2(scanner.nextDouble());
+        return num;
+    }
+    
+    public void devolverMayor(ObjetoMatematica num) {
+        System.out.println(Double.max(num.getN1(), num.getN2()));
+    }
+    
+    public void calcularPotencial(ObjetoMatematica num) {
+        if (num.getN1() > num.getN2()) {
+            System.out.println(Math.pow(Math.round(num.getN1()), Math.round(num.getN2())));            
+        } else {
+            System.out.println(Math.pow(Math.round(num.getN2()), Math.round(num.getN2())));            
+        }
+        
+    }
+
+    public void devolverRaizcCuadrada(ObjetoMatematica num) {
+        if (num.getN1() < num.getN2()) {
+            System.out.println(Math.sqrt(Math.abs(num.getN1())));
+        } else {
+            System.out.println(Math.sqrt(Math.abs(num.getN2())));
+        }
+    }
+}
